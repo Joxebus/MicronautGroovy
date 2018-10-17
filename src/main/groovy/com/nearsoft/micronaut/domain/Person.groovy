@@ -1,8 +1,10 @@
 package com.nearsoft.micronaut.domain
 
 import grails.gorm.annotation.Entity
+import groovy.transform.Canonical
 
 @Entity
+@Canonical
 class Person {
 
     String name

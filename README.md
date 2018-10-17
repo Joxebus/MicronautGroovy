@@ -1,6 +1,6 @@
 # MicronautGroovy
 
-This example contains an example with Micronaut, Groovy and GORM
+This repo contains an example with Micronaut, Groovy and GORM
 
 Groovy has been created to be companion with Java so most of the Java code is valid for Groovy.
 
@@ -95,5 +95,13 @@ DELETE /people/{id}
     "phone" : "523-124-8234"
 }
 ```
+
+## Run Tests
+
+```
+./gradlew clean test
+```
+
+After the execution you can see the results at `build/reports/tests/test/index.html`
 
 Take a look to Micronaut project at: http://guides.micronaut.io/creating-your-first-micronaut-app-groovy/guide/index.html

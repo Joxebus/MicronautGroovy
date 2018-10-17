@@ -1,20 +1,18 @@
 ---
 micronaut:
-  application:
-    name: MicronautGroovy
   server:
-    port: 8089
+    port: 18080
 ---
 hibernate:
   hbm2ddl:
-    auto: update
+    auto: create-drop
   cache:
     queries: false
     use_second_level_cache: true
     use_query_cache: false
     region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
 dataSource:
-  url: jdbc:h2:file:~/MicronautGroovy;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+  url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
   pooled: true
   jmxExport: true
   driverClassName: org.h2.Driver
