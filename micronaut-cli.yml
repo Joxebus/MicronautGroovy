@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: com.nearsoft.micronaut
+---
+testFramework: spock
+sourceLanguage: groovy

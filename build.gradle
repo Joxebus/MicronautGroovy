@@ -1,0 +1,111 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.15"
+    }
+}
+
+version "0.1"
+group "micronautgroovy"
+
+apply plugin:"io.spring.dependency-management"
+apply plugin:"com.github.johnrengelman.shadow"
+apply plugin:"application"
+apply plugin:"java"
+apply plugin:"groovy"
+apply plugin:"net.ltgt.apt-eclipse"
+apply plugin:"net.ltgt.apt-idea"
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://jcenter.bintray.com" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.micronaut:bom:1.0.0.M4'
+    }
+}
+
+dependencies {
+    annotationProcessor "io.micronaut:inject-java"
+    annotationProcessor "io.micronaut:inject-groovy"
+    compile "io.micronaut:inject"
+    compile "io.micronaut:runtime"
+    compile "io.micronaut:http-client"
+    compile "io.micronaut:http-server-netty"
+    compileOnly "io.micronaut:inject-java"
+    compileOnly "io.micronaut:inject-groovy"
+    runtime "ch.qos.logback:logback-classic:1.2.3"
+    testCompile "junit:junit:4.12"
+    testCompile "io.micronaut:inject-java"
+    testCompile "io.micronaut:inject-groovy"
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
+
+mainClassName = "micronautgroovy.Application"
+compileJava.options.compilerArgs += '-parameters'
+compileTestJava.options.compilerArgs += '-parameters'
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE"
+    }
+}
+
+version "0.1"
+group "micronautgroovy"
+
+apply plugin:"io.spring.dependency-management"
+apply plugin:"com.github.johnrengelman.shadow"
+apply plugin:"application"
+apply plugin:"groovy"
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://jcenter.bintray.com" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.micronaut:bom:1.0.0.M4'
+    }
+}
+
+dependencies {
+    compile "io.micronaut:http-client"
+    compile "io.micronaut:http-server-netty"
+    compile "io.micronaut:runtime-groovy"
+    compileOnly "io.micronaut:inject-groovy"
+    runtime "ch.qos.logback:logback-classic:1.2.3"
+    testCompile "io.micronaut:inject-groovy"
+    testCompile("org.spockframework:spock-core:1.1-groovy-2.4") {
+        exclude group: "org.codehaus.groovy", module: "groovy-all"
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
+
+mainClassName = "micronautgroovy.Application"
