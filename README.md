@@ -64,10 +64,17 @@ or for Windows
 
 `` gradlew.bat run``
 
+## Run with docker
+
+```
+$> ./gradlew assemble
+$> docker build -t micronaut-example-image .
+$> docker run -p 8089:8089/tcp -d --name micronaut_groovy micronaut-example-image
+```
 
 ## Endpoint
 
-`` localhost:8080/people ``
+`` localhost:8089 ``
 
 ```
 GET /people/
