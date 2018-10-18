@@ -17,7 +17,6 @@ class PersonControllerSpec extends Specification {
     @Shared @AutoCleanup EmbeddedServer embeddedServer = ApplicationContext.run(EmbeddedServer)
     @Shared PersonClient client
     @Shared PersonService service
-    @Shared Long id
 
     void setupSpec(){
         client = embeddedServer.applicationContext.getBean(PersonClient)
@@ -32,7 +31,7 @@ class PersonControllerSpec extends Specification {
 
     def "/people should return 2 elements" (){
         given:
-        id = service.save(new Person(name: "Mia", lastName: "Bautista", age: 2, phone: "235-547-8761" )).id
+        service.save(new Person(name: "Mia", lastName: "Bautista", age: 2, phone: "235-547-8761" ))
         service.save(new Person(name: "Sofia", lastName: "Ojeda", age: 10, phone: "765-234-8623"))
         when:
         List<Person> people = client.list()
@@ -76,6 +75,10 @@ class PersonControllerSpec extends Specification {
 
 
     def "/people delete"(){
+        given:
+        service.save(new Person(name: "Mia", lastName: "Bautista", age: 2, phone: "235-547-8761" ))
+        Long id = service.save(new Person(name: "Sofia", lastName: "Ojeda", age: 10, phone: "765-234-8623")).id
+
         when:
         def entity = client.delete(id)
 
