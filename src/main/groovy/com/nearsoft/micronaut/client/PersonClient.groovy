@@ -4,7 +4,7 @@ import com.nearsoft.micronaut.api.PersonApi
 import com.nearsoft.micronaut.domain.Person
 import io.micronaut.http.annotation.Post
 import io.micronaut.http.annotation.Put
-import io.micronaut.http.client.Client
+import io.micronaut.http.client.annotation.Client
 
 @Client("/people")
 interface PersonClient extends PersonApi {
