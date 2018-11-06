@@ -4,6 +4,10 @@ micronaut:
     name: MicronautGroovy
   server:
     port: 8089
+  views:
+    thymeleaf:
+      enabled: true
+      character-encoding: "UTF-8"
 ---
 hibernate:
   hbm2ddl:

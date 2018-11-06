@@ -50,6 +50,14 @@ dependencies {
     testCompile("org.spockframework:spock-core:1.1-groovy-2.4") {
         exclude group: "org.codehaus.groovy", module: "groovy-all"
     }
+
+    // Thymeleaf support
+    compile "io.micronaut:micronaut-views"
+    runtime "org.thymeleaf:thymeleaf:3.0.9.RELEASE"
+
+    // Bootstrap
+    compile group: 'org.webjars', name: 'bootstrap', version: '4.1.3'
+
 }
 
 shadowJar {
