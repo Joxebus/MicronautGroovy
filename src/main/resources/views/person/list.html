@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>List of People</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+    <h2>List of People</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Phone</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${listOfPeople}">
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.lastName}">Last name</td>
+            <td th:text="${person.age}">Age</td>
+            <td th:text="${person.phone}">Age</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

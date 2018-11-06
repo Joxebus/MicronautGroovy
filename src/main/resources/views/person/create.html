@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>List of People</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+    <h2>Add new person</h2>
+
+    <form action="/person/create" th:object="${person}" method="post">
+        <div class="form-group">
+            <label for="fieldName">Name</label>
+            <input type="text" th:field="*{name}" class="form-control" id="fieldName" placeholder="Name" name="Person[name]"/>
+            <label for="fieldLastName">Last Name</label>
+            <input type="text" th:field="*{lastName}" class="form-control" id="fieldLastName" placeholder="Last name" name="Person[lastName]"/>
+            <label for="fieldAge">Last Name</label>
+            <input type="text" th:field="*{age}" class="form-control" id="fieldAge" placeholder="Age" name="Person[age]"/>
+            <label for="fieldPhone">Phone</label>
+            <input type="phone" th:field="*{phone}" class="form-control" id="fieldPhone" placeholder="###-###-####" name="Person[phone]"/>
+            <br/>
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+            <input type="reset" value="Reset" class="btn btn-default"/>
+        </div>
+    </form>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
