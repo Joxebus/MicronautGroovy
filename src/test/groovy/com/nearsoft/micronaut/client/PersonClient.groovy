@@ -7,7 +7,8 @@ import io.micronaut.http.client.annotation.Client
 
 @Client("/people")
 interface PersonClient extends PersonApi {
+
     @Delete("/{id}")
-    @Override
     HttpResponse delete(Long id)
+
 }
