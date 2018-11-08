@@ -2,6 +2,7 @@ package com.nearsoft.micronaut.api
 
 import com.nearsoft.micronaut.domain.Person
 import io.micronaut.http.HttpResponse
+import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Delete
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
@@ -10,9 +11,9 @@ import io.micronaut.http.annotation.Put
 interface PersonApi {
 
     @Post("/")
-    Person create(Person person)
+    Person create(@Body Person person)
     @Put("/")
-    Person update(Person person)
+    Person update(@Body Person person)
     @Get("/")
     List<Person> list()
     @Get("/{id}")
