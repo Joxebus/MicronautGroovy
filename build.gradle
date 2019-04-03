@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://jcenter.bintray.com" }
     }
     dependencies {
         classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
@@ -26,7 +26,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom 'io.micronaut:micronaut-bom:1.0.0.RC3'
+        mavenBom 'io.micronaut:micronaut-bom:1.0.5'
     }
 }
 
@@ -42,9 +42,12 @@ dependencies {
 
     compileOnly "io.micronaut:micronaut-inject-groovy"
 
+    compile "org.codehaus.groovy:groovy:2.5.1"
+
     runtime "ch.qos.logback:logback-classic:1.2.3"
     runtime "com.h2database:h2:1.4.196"
     runtime "org.apache.tomcat:tomcat-jdbc:8.0.44"
+    runtime "org.hibernate:hibernate-ehcache:5.1.9.Final"
 
     testCompile "io.micronaut:micronaut-inject-groovy"
     testCompile("org.spockframework:spock-core:1.1-groovy-2.4") {
