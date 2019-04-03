@@ -3,6 +3,7 @@ package com.nearsoft.micronaut.controller
 import com.nearsoft.micronaut.domain.Person
 import com.nearsoft.micronaut.service.PersonService
 import groovy.util.logging.Slf4j
+import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
@@ -38,7 +39,7 @@ class PersonViewController {
         try{
             personService.save(person)
             return new ModelAndView("person/list",
-                    [person : new Person()]
+                    [listOfPeople : personService.findAll()]
             )
         }catch(Exception e){
             return new ModelAndView("person/create",
