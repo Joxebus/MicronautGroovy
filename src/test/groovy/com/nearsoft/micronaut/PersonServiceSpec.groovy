@@ -8,6 +8,7 @@ import io.micronaut.runtime.server.EmbeddedServer
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
 @Rollback
 class PersonServiceSpec extends Specification {
@@ -32,9 +33,10 @@ class PersonServiceSpec extends Specification {
         people.size() == 1
     }
 
+    @Unroll("Testing for name #name #lastName")
     def "Service can save and show a person by id"(){
         given:
-        Long id = service.save(new Person(name:"Krista", lastName: "Bautista", age:3, phone: "654-763-8763")).id
+        Long id = service.save(new Person(name:name, lastName: lastName, age:age, phone: phone)).id
 
         when:
         Person person = service.find(id)
@@ -43,11 +45,18 @@ class PersonServiceSpec extends Specification {
 
         person.with {
             it.id == id
-            name == "Krista"
-            lastName == "Bautista"
-            age == 3
-            phone == "654-763-8763"
+            it.name == name
+            it.lastName == lastName
+            it.age == age
+            it.phone == phone
         }
+
+        where:
+
+        name        | lastName      | age    | phone
+        "Krista"    | "Bautista"    | 2      | "98324786234"
+        "Jorge"     | "Reyes"       | 31     | "65234"
+        "Ramon"     | "Ayala"       | 27     | "234235"
     }
 
     def "Service can update a person by id"(){
