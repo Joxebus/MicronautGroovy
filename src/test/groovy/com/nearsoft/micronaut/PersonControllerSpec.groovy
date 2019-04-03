@@ -1,6 +1,6 @@
 package com.nearsoft.micronaut
 
-import com.nearsoft.micronaut.client.PersonClient
+import com.nearsoft.micronaut.api.PersonApi
 import com.nearsoft.micronaut.domain.Person
 import com.nearsoft.micronaut.service.PersonService
 import grails.gorm.transactions.Transactional
@@ -15,11 +15,11 @@ import spock.lang.Unroll
 class PersonControllerSpec extends Specification {
 
     @Shared @AutoCleanup EmbeddedServer embeddedServer = ApplicationContext.run(EmbeddedServer)
-    @Shared PersonClient client
+    @Shared PersonApi client
     @Shared PersonService service
 
     void setupSpec(){
-        client = embeddedServer.applicationContext.getBean(PersonClient)
+        client = embeddedServer.applicationContext.getBean(PersonApi)
         service = embeddedServer.applicationContext.getBean(PersonService)
     }
 
