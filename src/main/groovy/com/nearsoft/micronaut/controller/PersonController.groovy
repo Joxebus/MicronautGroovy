@@ -30,7 +30,14 @@ class PersonController implements PersonApi {
     @Override
     @Put("/")
     Person update(@Body Person person){
-        personService.save(person)
+        Person personToUpdate = personService.find(person.id)
+        personToUpdate.with {
+            it.name = person.name
+            it.lastName = person.lastName
+            it.age = person.age
+            it.phone = person.phone
+        }
+        personService.save(personToUpdate)
     }
 
     @Override
