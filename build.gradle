@@ -2,20 +2,23 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url "https://jcenter.bintray.com" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
         classpath "io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE"
+        classpath "com.gradle:build-scan-plugin:1.16"
     }
 }
 
 version "0.1"
 group "com.nearsoft"
 
-apply plugin:"io.spring.dependency-management"
-apply plugin:"com.github.johnrengelman.shadow"
-apply plugin:"application"
-apply plugin:"groovy"
+apply plugin: "io.spring.dependency-management"
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "application"
+apply plugin: "groovy"
+apply plugin: "com.gradle.build-scan"
 
 
 repositories {
@@ -67,4 +70,9 @@ test {
     testLogging {
         showStandardStreams = true
     }
+}
+
+buildScan {
+    licenseAgreementUrl = "https://gradle.com/terms-of-service"
+    licenseAgree = "yes"
 }
