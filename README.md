@@ -1,4 +1,5 @@
 # MicronautGroovy
+[![Build Status](https://travis-ci.org/Joxebus/MicronautGroovy.svg?branch=master)](https://travis-ci.org/Joxebus/MicronautGroovy)
 
 This repo contains an example with Micronaut, Groovy and GORM
 
@@ -100,6 +101,11 @@ DELETE /people/{id}
 
 ```
 ./gradlew clean test
+```
+
+## Build the project
+```
+./gradlew build
 ```
 
 After the execution you can see the results at `build/reports/tests/test/index.html`
