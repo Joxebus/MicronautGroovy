@@ -1,4 +1,9 @@
+# Ignore directories
 out/
 build/
+target/
+.idea/
+
+# Ignore compiled and jars
 *.jar
 *.class
