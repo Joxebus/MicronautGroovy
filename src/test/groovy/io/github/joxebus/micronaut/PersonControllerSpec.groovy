@@ -1,9 +1,10 @@
-package com.nearsoft.micronaut
+package io.github.joxebus.micronaut
 
-import com.nearsoft.micronaut.api.PersonApi
-import com.nearsoft.micronaut.domain.Person
-import com.nearsoft.micronaut.service.PersonService
+import io.github.joxebus.micronaut.api.PersonApi
+import io.github.joxebus.micronaut.client.PersonClient
+import io.github.joxebus.micronaut.domain.Person
 import grails.gorm.transactions.Transactional
+import io.github.joxebus.micronaut.service.PersonService
 import io.micronaut.context.ApplicationContext
 import io.micronaut.http.HttpStatus
 import io.micronaut.runtime.server.EmbeddedServer

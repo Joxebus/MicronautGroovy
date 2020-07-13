@@ -1,4 +1,4 @@
-package com.nearsoft.micronaut.domain
+package io.github.joxebus.micronaut.domain
 
 import grails.gorm.annotation.Entity
 import groovy.transform.Canonical
