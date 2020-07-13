@@ -1,8 +1,9 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://jcenter.bintray.com" }
-        maven { url "https://plugins.gradle.org/m2/" }
+        jcenter()
+        maven { url "https://dl.bintray.com/micronaut/core-releases-local" }
+        maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
         classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
@@ -29,31 +30,31 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom 'io.micronaut:micronaut-bom:1.0.5'
+        mavenBom 'io.micronaut:micronaut-bom:2.0.0'
     }
 }
 
 dependencies {
     compile "io.micronaut:micronaut-http-client"
     compile "io.micronaut:micronaut-http-server-netty"
-    compile "io.micronaut:micronaut-runtime-groovy"
+    compile "io.micronaut.groovy:micronaut-runtime-groovy"
 
-    compile "io.micronaut.configuration:micronaut-hibernate-validator"
-    compile "io.micronaut.configuration:micronaut-hibernate-gorm"
+    compile "io.micronaut.beanvalidation:micronaut-hibernate-validator"
+    compile "io.micronaut.groovy:micronaut-hibernate-gorm"
 
     compile "io.micronaut:micronaut-discovery-client"
 
     compileOnly "io.micronaut:micronaut-inject-groovy"
 
-    compile "org.codehaus.groovy:groovy:2.5.1"
+    compile "org.codehaus.groovy:groovy:3.0.3"
 
     runtime "ch.qos.logback:logback-classic:1.2.3"
     runtime "com.h2database:h2:1.4.196"
     runtime "org.apache.tomcat:tomcat-jdbc:8.0.44"
-    runtime "org.hibernate:hibernate-ehcache:5.1.9.Final"
+    runtime "org.hibernate:hibernate-ehcache:5.4.18.Final"
 
     testCompile "io.micronaut:micronaut-inject-groovy"
-    testCompile("org.spockframework:spock-core:1.1-groovy-2.4") {
+    testCompile("org.spockframework:spock-core:2.0-M3-groovy-3.0") {
         exclude group: "org.codehaus.groovy", module: "groovy-all"
     }
 }
@@ -67,6 +68,7 @@ run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
 mainClassName = "io.github.joxebus.micronaut.Application"
 
 test {
+    useJUnitPlatform()
     testLogging {
         showStandardStreams = true
     }
