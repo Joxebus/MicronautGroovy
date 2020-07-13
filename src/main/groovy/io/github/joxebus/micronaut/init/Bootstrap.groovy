@@ -1,9 +1,10 @@
-package com.nearsoft.micronaut.init
+package io.github.joxebus.micronaut.init
 
-import com.nearsoft.micronaut.domain.Person
-import com.nearsoft.micronaut.service.PersonService
+
 import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
+import io.github.joxebus.micronaut.domain.Person
+import io.github.joxebus.micronaut.service.PersonService
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.env.Environment
 import io.micronaut.context.event.ApplicationEventListener

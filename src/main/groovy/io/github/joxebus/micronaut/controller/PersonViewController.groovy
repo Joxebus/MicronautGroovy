@@ -1,9 +1,8 @@
-package com.nearsoft.micronaut.controller
+package io.github.joxebus.micronaut.controller
 
-import com.nearsoft.micronaut.domain.Person
-import com.nearsoft.micronaut.service.PersonService
+import io.github.joxebus.micronaut.domain.Person
+import io.github.joxebus.micronaut.service.PersonService
 import groovy.util.logging.Slf4j
-import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get

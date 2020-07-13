@@ -1,6 +1,7 @@
-package com.nearsoft.micronaut.api
+package io.github.joxebus.micronaut.api
 
-import com.nearsoft.micronaut.domain.Person
+
+import io.github.joxebus.micronaut.domain.Person
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Delete
 import io.micronaut.http.annotation.Get

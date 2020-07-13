@@ -1,4 +1,4 @@
-package com.nearsoft.micronaut.controller
+package io.github.joxebus.micronaut.controller
 
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get

@@ -10,7 +10,7 @@ buildscript {
 }
 
 version "0.1"
-group "com.nearsoft"
+group "io.github.joxebus"
 
 apply plugin:"io.spring.dependency-management"
 apply plugin:"com.github.johnrengelman.shadow"
@@ -69,7 +69,7 @@ shadowJar {
 
 run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
 
-mainClassName = "com.nearsoft.micronaut.Application"
+mainClassName = "io.github.joxebus.micronaut.Application"
 
 test {
     testLogging {

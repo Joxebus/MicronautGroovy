@@ -1,7 +1,7 @@
-package com.nearsoft.micronaut.client
+package io.github.joxebus.micronaut.client
 
-import com.nearsoft.micronaut.api.PersonApi
-import com.nearsoft.micronaut.domain.Person
+import io.github.joxebus.micronaut.api.PersonApi
+import io.github.joxebus.micronaut.domain.Person
 import io.micronaut.http.annotation.Post
 import io.micronaut.http.annotation.Put
 import io.micronaut.http.client.annotation.Client
