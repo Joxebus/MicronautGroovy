@@ -7,7 +7,7 @@ micronaut:
 ---
 hibernate:
   hbm2ddl:
-    auto: update
+    auto: create-drop
   cache:
     queries: false
     use_second_level_cache: true

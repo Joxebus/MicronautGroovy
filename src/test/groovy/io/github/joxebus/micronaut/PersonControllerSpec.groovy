@@ -1,7 +1,6 @@
 package io.github.joxebus.micronaut
 
 import io.github.joxebus.micronaut.api.PersonApi
-import io.github.joxebus.micronaut.client.PersonClient
 import io.github.joxebus.micronaut.domain.Person
 import grails.gorm.transactions.Transactional
 import io.github.joxebus.micronaut.service.PersonService
