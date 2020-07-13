@@ -1,4 +1,4 @@
-package com.nearsoft.micronaut
+package io.github.joxebus.micronaut
 
 import io.micronaut.runtime.Micronaut
 

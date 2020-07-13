@@ -1,9 +1,9 @@
-package com.nearsoft.micronaut.controller
+package io.github.joxebus.micronaut.controller
 
-import com.nearsoft.micronaut.api.PersonApi
-import com.nearsoft.micronaut.domain.Person
-import com.nearsoft.micronaut.service.PersonService
+import io.github.joxebus.micronaut.api.PersonApi
 import groovy.transform.CompileStatic
+import io.github.joxebus.micronaut.domain.Person
+import io.github.joxebus.micronaut.service.PersonService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller

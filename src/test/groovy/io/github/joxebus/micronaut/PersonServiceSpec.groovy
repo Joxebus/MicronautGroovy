@@ -1,8 +1,9 @@
-package com.nearsoft.micronaut
+package io.github.joxebus.micronaut
 
-import com.nearsoft.micronaut.domain.Person
-import com.nearsoft.micronaut.service.PersonService
+
 import grails.gorm.transactions.Rollback
+import io.github.joxebus.micronaut.domain.Person
+import io.github.joxebus.micronaut.service.PersonService
 import io.micronaut.context.ApplicationContext
 import io.micronaut.runtime.server.EmbeddedServer
 import spock.lang.AutoCleanup
