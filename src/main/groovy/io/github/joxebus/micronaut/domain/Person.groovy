@@ -15,6 +15,7 @@ class Person {
     static constraints = {
         lastName nullable: true
         phone nullable: true
+        age min: 18, max: 99
     }
 
 }

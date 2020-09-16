@@ -5,6 +5,7 @@ import io.github.joxebus.micronaut.service.PersonService
 import grails.gorm.transactions.Rollback
 import io.micronaut.context.ApplicationContext
 import io.micronaut.runtime.server.EmbeddedServer
+import org.grails.datastore.mapping.validation.ValidationException
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
@@ -32,9 +33,25 @@ class PersonServiceSpec extends Specification {
         people.size() == 1
     }
 
+    def "Person should be with an age between 18 and 99"() {
+        given:
+        Person person = new Person()
+        person.with {
+            name = "Omar"
+            lastName = "Bautista"
+            age = 12
+        }
+
+        when:
+        service.save(person)
+
+        then:
+        thrown(ValidationException)
+    }
+
     def "Service can save and show a person by id"(){
         given:
-        Long id = service.save(new Person(name:"Krista", lastName: "Bautista", age:3, phone: "654-763-8763")).id
+        Long id = service.save(new Person(name:"Krista", lastName: "Bautista", age:22, phone: "654-763-8763")).id
 
         when:
         Person person = service.find(id)

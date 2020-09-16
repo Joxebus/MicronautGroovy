@@ -31,8 +31,8 @@ class PersonControllerSpec extends Specification {
 
     def "/people should return 2 elements" (){
         given:
-        service.save(new Person(name: "Mia", lastName: "Bautista", age: 2, phone: "235-547-8761" ))
-        service.save(new Person(name: "Sofia", lastName: "Ojeda", age: 10, phone: "765-234-8623"))
+        service.save(new Person(name: "Mia", lastName: "Bautista", age: 22, phone: "235-547-8761" ))
+        service.save(new Person(name: "Sofia", lastName: "Ojeda", age: 19, phone: "765-234-8623"))
         when:
         List<Person> people = client.list()
         then:
@@ -42,7 +42,6 @@ class PersonControllerSpec extends Specification {
     @Unroll("Creating person with name: #name ")
     def "/people should save via post"(){
         when:
-
         def response = client.create(name, lastName, age, phone)
 
         then:
@@ -54,14 +53,14 @@ class PersonControllerSpec extends Specification {
         }
         where:
         name        | lastName      |   age     | phone
-        "Krista"    | "Bautista"    |   3       | "987-234-6324"
+        "Krista"    | "Bautista"    |   22      | "987-234-6324"
         "Maria"     | "Ojeda"       |   29      | "873-513-6249"
-        "Jorge"     | "Valenuela"   |   31      | "753-263-1832"
+        "Jorge"     | "Valenzuela"  |   31      | "753-263-1832"
     }
 
     def "/people show specific person"(){
         given:
-        Person person = client.create("Mia", "Bautista", 2, "235-547-8761")
+        Person person = client.create("Mia", "Bautista", 22, "235-547-8761" )
         when:
         def response = client.show(person.id)
         then:
@@ -76,8 +75,8 @@ class PersonControllerSpec extends Specification {
 
     def "/people delete"(){
         given:
-        service.save(new Person(name: "Mia", lastName: "Bautista", age: 2, phone: "235-547-8761" ))
-        Long id = service.save(new Person(name: "Sofia", lastName: "Ojeda", age: 10, phone: "765-234-8623")).id
+        service.save(new Person(name: "Mia", lastName: "Bautista", age: 22, phone: "235-547-8761" ))
+        Long id = service.save(new Person(name: "Sofia", lastName: "Ojeda", age: 19, phone: "765-234-8623")).id
 
         when:
         def entity = client.delete(id)
@@ -89,8 +88,7 @@ class PersonControllerSpec extends Specification {
 
     def "/people update the first element"(){
         given:
-        Person person = client.create("Mia", "Bautista", 2, "235-547-8761")
-
+        Person person = client.create("Mia", "Bautista", 22, "235-547-8761" )
         when:
         def response = client.update(person.id, "Josue", "Fernandez", 39, '552-876-2341')
 

@@ -1,6 +1,5 @@
 package io.github.joxebus.micronaut.controller
 
-import io.github.joxebus.micronaut.api.PersonApi
 import io.github.joxebus.micronaut.domain.Person
 import io.github.joxebus.micronaut.service.PersonService
 import groovy.transform.CompileStatic
@@ -13,7 +12,7 @@ import io.micronaut.http.annotation.Put
 
 @Controller("/people")
 @CompileStatic
-class PersonController implements PersonApi {
+class PersonController {
 
     final PersonService personService
 
