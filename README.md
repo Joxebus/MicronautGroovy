@@ -1,5 +1,5 @@
 # MicronautGroovy
-[![Build Status](https://travis-ci.org/Joxebus/MicronautGroovy.svg?branch=master)](https://travis-ci.org/Joxebus/MicronautGroovy)
+[![Build Status](https://travis-ci.com/Joxebus/MicronautGroovy.svg?branch=master)](https://travis-ci.com/Joxebus/MicronautGroovy)
 
 This repo contains an example with Micronaut, Groovy and GORM
 
