@@ -1,0 +1,1 @@
+web: java $JAVA_TOOL_OPTIONS -jar build/libs/MicronautGroovy-0.1-all.jar
