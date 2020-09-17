@@ -1,0 +1,22 @@
+---
+micronaut:
+  security:
+    enabled: true
+    authentication: cookie
+    endpoints:
+      login:
+        enabled: true
+      logout:
+        get-allowed: true
+    token:
+      jwt:
+        bearer:
+          enabled: false
+        cookie:
+          enabled: true
+        enabled: true
+        signatures:
+          secret:
+            generator:
+              secret: '${TOKEN_SECRET:pleaseChangeThisSecretForANewOne}'
+              jws-algorithm: HS256

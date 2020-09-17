@@ -2,6 +2,10 @@
 micronaut:
   security:
     enabled: false
+    intercept-url-map:
+      - pattern: /public/**
+        access:
+          - isAnonymous()
   application:
     name: MicronautGroovy
   server:
@@ -10,6 +14,12 @@ micronaut:
     thymeleaf:
       enabled: true
       character-encoding: "UTF-8"
+  router:
+    static-resources:
+      default:
+        enabled: true
+        mapping: "/public/**"
+        paths: "classpath:public"
 ---
 hibernate:
   hbm2ddl:
