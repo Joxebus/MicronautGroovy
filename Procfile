@@ -1,1 +1,1 @@
-web: java $JAVA_TOOL_OPTIONS -jar build/libs/micronaut-groovy-0.1-all.jar -Dmicronaut.server.port=$PORT -Dmicronaut.environments=heroku
+web: java $JAVA_TOOL_OPTIONS -jar build/libs/micronaut-groovy-0.1-all.jar -Dmicronaut.server.port=$PORT -Dmicronaut.environments=heroku,security
