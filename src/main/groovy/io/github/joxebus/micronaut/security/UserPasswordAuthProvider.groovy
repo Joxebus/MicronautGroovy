@@ -1,6 +1,5 @@
 package io.github.joxebus.micronaut.security
 
-import groovy.transform.CompileStatic
 import io.github.joxebus.micronaut.domain.User
 import io.github.joxebus.micronaut.service.UserService
 import edu.umd.cs.findbugs.annotations.Nullable;

@@ -11,7 +11,7 @@
 
 <div class="container">
     <h1 th:text="${message}"></h1>
-    <h2 th:if="${security}">username: <span th:text="${security.attributes.get('email')}"></span></h2>
+    <h2 th:if="${security}">username: <span th:text="${security.attributes.get('username')}"></span></h2>
     <h2 th:unless="${security}">username: Anonymous</h2>
 
     <p>This project is an example of how to get running Micronaut with
