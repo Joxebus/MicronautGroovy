@@ -15,13 +15,13 @@
     <form action="/person/create" th:object="${person}" method="post">
         <div class="form-group">
             <label for="fieldName">Name</label>
-            <input type="text" th:field="*{name}" class="form-control" id="fieldName" placeholder="Name" name="name"/>
+            <input type="text" th:field="*{name}" class="form-control" id="fieldName" placeholder="Name" name="name" required/>
             <label for="fieldLastName">Last Name</label>
-            <input type="text" th:field="*{lastName}" class="form-control" id="fieldLastName" placeholder="Last name" name="lastName"/>
+            <input type="text" th:field="*{lastName}" class="form-control" id="fieldLastName" placeholder="Last name" name="lastName" required/>
             <label for="fieldAge">Age</label>
-            <input type="text" th:field="*{age}" class="form-control" id="fieldAge" placeholder="Age" name="age"/>
+            <input type="number" th:field="*{age}" class="form-control" id="fieldAge" placeholder="Age" name="age" min="18" max="99" required/>
             <label for="fieldPhone">Phone</label>
-            <input type="phone" th:field="*{phone}" class="form-control" id="fieldPhone" placeholder="###-###-####" name="phone"/>
+            <input type="text" th:field="*{phone}" class="form-control" id="fieldPhone" placeholder="###-###-####" name="phone" pattern="(\d{3})-(\d{3})-(\d{4})" required/>
             <br/>
             <input type="submit" value="Submit" class="btn btn-primary"/>
             <input type="reset" value="Reset" class="btn btn-default"/>
