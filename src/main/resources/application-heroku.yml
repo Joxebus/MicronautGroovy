@@ -1,6 +1,7 @@
 ---
 micronaut:
   security:
+    enabled: true
     authentication: idtoken
     oauth2:
       clients:

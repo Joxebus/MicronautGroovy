@@ -1,5 +1,7 @@
 ---
 micronaut:
+  security:
+    enabled: false
   application:
     name: MicronautGroovy
   server:
