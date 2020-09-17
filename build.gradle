@@ -64,6 +64,9 @@ dependencies {
     // Bootstrap
     compile group: 'org.webjars', name: 'bootstrap', version: '4.1.3'
 
+    implementation "io.micronaut.security:micronaut-security-oauth2"
+    annotationProcessor "io.micronaut.security:micronaut-security-annotations"
+    implementation "io.micronaut.security:micronaut-security-jwt"
 }
 
 shadowJar {
