@@ -2,6 +2,8 @@
 micronaut:
   server:
     port: 18080
+  security:
+    enabled: false
 ---
 hibernate:
   hbm2ddl:

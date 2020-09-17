@@ -1,0 +1,14 @@
+---
+micronaut:
+  security:
+    authentication: idtoken
+    oauth2:
+      clients:
+        google:
+          client-id: '${OAUTH_CLIENT_ID}'
+          client-secret: '${OAUTH_CLIENT_SECRET}'
+          openid:
+            issuer: 'https://accounts.google.com'
+    endpoints:
+      logout:
+        get-allowed: true
