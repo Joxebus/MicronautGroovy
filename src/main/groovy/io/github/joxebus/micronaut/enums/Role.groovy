@@ -1,12 +1,7 @@
-package io.github.joxebus.micronaut.domain
+package io.github.joxebus.micronaut.enums
 
-import grails.gorm.annotation.Entity
-import groovy.transform.Canonical
-
-@Entity
-@Canonical
-class Role {
-
-    String name
+enum Role {
+    ADMIN,
+    USER
 
 }

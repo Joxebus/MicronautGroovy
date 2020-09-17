@@ -1,6 +1,6 @@
 package io.github.joxebus.micronaut.security
 
-
+import groovy.transform.CompileStatic
 import io.github.joxebus.micronaut.domain.User
 import io.github.joxebus.micronaut.service.UserService
 import edu.umd.cs.findbugs.annotations.Nullable;
@@ -30,7 +30,7 @@ class UserPasswordAuthProvider implements AuthenticationProvider {
         User dbUser = userService.findByUsername(user.username)
         Flowable.create(emitter -> {
             if (dbUser?.password == user.encryptPassword()) {
-                emitter.onNext(new UserDetails(user.username, user.roles))
+                emitter.onNext(new UserDetails(user.username, user.roles, [email:user.username]))
                 emitter.onComplete()
             } else {
                 emitter.onError(new AuthenticationException(new AuthenticationFailed()))
