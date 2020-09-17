@@ -42,7 +42,7 @@ class PersonControllerSpec extends Specification {
     @Unroll("Creating person with name: #name ")
     def "/people should save via post"(){
         when:
-        def response = client.create(name, lastName, age, phone)
+        def response = client.create(new Person(name, lastName, age, phone))
 
         then:
         response.with {
@@ -60,7 +60,7 @@ class PersonControllerSpec extends Specification {
 
     def "/people show specific person"(){
         given:
-        Person person = client.create("Mia", "Bautista", 22, "235-547-8761" )
+        Person person = client.create(new Person("Mia", "Bautista", 22, "235-547-8761" ))
         when:
         def response = client.show(person.id)
         then:
@@ -88,9 +88,15 @@ class PersonControllerSpec extends Specification {
 
     def "/people update the first element"(){
         given:
-        Person person = client.create("Mia", "Bautista", 22, "235-547-8761" )
+        Person personToUpdate = client.create(new Person("Mia", "Bautista", 22, "235-547-8761" ))
+        personToUpdate.with {
+            name = "Josue"
+            lastName = "Fernandez"
+            age = 39
+            phone = '552-876-2341'
+        }
         when:
-        def response = client.update(person.id, "Josue", "Fernandez", 39, '552-876-2341')
+        def response = client.update(personToUpdate)
 
         then:
         response.with {
@@ -101,7 +107,7 @@ class PersonControllerSpec extends Specification {
             phone     == '552-876-2341'
         }
 
-        person.with {
+        personToUpdate.with {
             id       == response.id
             name     != response.name
             lastName != response.lastName

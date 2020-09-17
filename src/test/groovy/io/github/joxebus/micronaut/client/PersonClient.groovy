@@ -2,6 +2,7 @@ package io.github.joxebus.micronaut.client
 
 import io.github.joxebus.micronaut.domain.Person
 import io.micronaut.http.HttpResponse
+import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Delete
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
@@ -11,9 +12,9 @@ import io.micronaut.http.client.annotation.Client
 @Client("/people")
 interface PersonClient {
     @Post("/")
-    Person create(String name, String lastName, int age, String phone)
+    Person create(@Body Person person)
     @Put("/")
-    Person update(Long id, String name, String lastName, int age, String phone)
+    Person update(@Body Person person)
     @Get("/")
     List<Person> list()
     @Get("/{id}")
