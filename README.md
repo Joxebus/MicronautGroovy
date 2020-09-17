@@ -1,5 +1,5 @@
 # MicronautGroovy
-[![Build Status](https://travis-ci.com/Joxebus/MicronautGroovy.svg?branch=thymeleaf)](https://travis-ci.com/Joxebus/MicronautGroovy)
+[![Build Status](https://travis-ci.com/Joxebus/MicronautGroovy.svg?branch=thymeleaf_oauth_google)](https://travis-ci.com/Joxebus/MicronautGroovy)
 This repo contains an example with Micronaut, Groovy and GORM
 
 Groovy has been created to be companion with Java so most of the Java code is valid for Groovy.
