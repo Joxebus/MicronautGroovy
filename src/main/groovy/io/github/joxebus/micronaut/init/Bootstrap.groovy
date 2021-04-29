@@ -1,13 +1,13 @@
 package io.github.joxebus.micronaut.init
 
 
-import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
 import io.github.joxebus.micronaut.domain.Person
-import io.github.joxebus.micronaut.enums.Role
+import io.github.joxebus.micronaut.domain.Role
 import io.github.joxebus.micronaut.domain.User
+import io.github.joxebus.micronaut.enums.RoleEnum
 import io.github.joxebus.micronaut.service.PersonService
-
+import io.github.joxebus.micronaut.service.RoleService
 import io.github.joxebus.micronaut.service.UserService
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.env.Environment
@@ -17,15 +17,16 @@ import io.micronaut.runtime.server.event.ServerStartupEvent
 import javax.inject.Singleton
 
 @Slf4j
-@CompileStatic
 @Singleton
 @Requires(notEnv = Environment.TEST)
 class Bootstrap implements ApplicationEventListener<ServerStartupEvent> {
 
+    final RoleService roleService
     final PersonService personService
     final UserService userService
 
-    Bootstrap(PersonService personService, UserService userService) {
+    Bootstrap(RoleService roleService, PersonService personService, UserService userService) {
+        this.roleService = roleService
         this.personService = personService
         this.userService = userService
     }
@@ -43,11 +44,20 @@ class Bootstrap implements ApplicationEventListener<ServerStartupEvent> {
 
         if(!userService.count()) {
             log.debug("Loading admin user")
+            Role admin = new Role(name: RoleEnum.ADMIN.toString())
+            Role user = new Role(name: RoleEnum.USER.toString())
+
+            roleService.with {
+                save(admin)
+                save(user)
+            }
+
             User userAdmin = new User()
             userAdmin.with {
                 username = "admin@admin.com"
                 password = "admin123"
-                roles = [Role.ADMIN.toString(), Role.USER.toString()] as Set
+                addToRoles(admin)
+                addToRoles(user)
             }
             userService.save(userAdmin)
         }

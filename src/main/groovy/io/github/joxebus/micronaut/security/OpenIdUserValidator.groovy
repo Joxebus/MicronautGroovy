@@ -1,8 +1,10 @@
 package io.github.joxebus.micronaut.security
 
 import groovy.util.logging.Slf4j
+import io.github.joxebus.micronaut.domain.Role
 import io.github.joxebus.micronaut.domain.User
-import io.github.joxebus.micronaut.enums.Role
+import io.github.joxebus.micronaut.enums.RoleEnum
+import io.github.joxebus.micronaut.service.RoleService
 import io.github.joxebus.micronaut.service.UserService
 import io.micronaut.security.oauth2.client.OpenIdProviderMetadata
 import io.micronaut.security.oauth2.configuration.OauthClientConfiguration
@@ -19,6 +21,9 @@ class OpenIdUserValidator implements OpenIdClaimsValidator {
     @Inject
     UserService userService
 
+    @Inject
+    RoleService roleService
+
     @Override
     boolean validate(OpenIdClaims claims, OauthClientConfiguration clientConfiguration, OpenIdProviderMetadata providerMetadata) {
         if( claims?.email ) {
@@ -32,7 +37,13 @@ class OpenIdUserValidator implements OpenIdClaimsValidator {
         User user = userService.findByUsername(email)
         if(!user) {
             log.debug("Registering new user: {}", email)
-            user = new User(username: email, password: UUID.randomUUID().toString() , roles: [Role.USER.toString()])
+            Role userRole = roleService.findByName(RoleEnum.USER.toString())
+            user = new User()
+            user.with {
+                username:email
+                password:UUID.randomUUID().toString()
+                addToRoles(userRole)
+            }
             userService.save(user)
         } else {
             log.debug("User [{}] already registered", email)

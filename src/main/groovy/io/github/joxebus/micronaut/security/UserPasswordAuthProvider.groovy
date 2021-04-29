@@ -29,11 +29,12 @@ class UserPasswordAuthProvider implements AuthenticationProvider {
         User dbUser = userService.findByUsername(user.username)
         Flowable.create(emitter -> {
             if (dbUser?.password == user.encryptPassword()) {
-                emitter.onNext(new UserDetails(user.username, user.roles, [email:user.username]))
+                List<String> roles = user.roles.collect{it.name }
+                emitter.onNext(new UserDetails(user.username, roles, [email:user.username]))
                 emitter.onComplete()
             } else {
                 emitter.onError(new AuthenticationException(new AuthenticationFailed()))
             }
-        }, BackpressureStrategy.ERROR)
+        }, BackpressureStrategy.ERROR) as Publisher<AuthenticationResponse>
     }
 }

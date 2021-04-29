@@ -6,8 +6,8 @@ micronaut:
     oauth2:
       clients:
         google:
-          client-id: '${OAUTH_CLIENT_ID}'
-          client-secret: '${OAUTH_CLIENT_SECRET}'
+          client-id: '${OAUTH_CLIENT_ID:yourGoogleClientID}'
+          client-secret: '${OAUTH_CLIENT_SECRET:yourGoogleClientSecret}'
           openid:
             issuer: 'https://accounts.google.com'
     endpoints:
@@ -20,6 +20,6 @@ hibernate:
     auto: update
 dataSource:
   driverClassName: org.postgresql.Driver
-  url: ${JDBC_DATABASE_URL}
-  username: ${JDBC_DATABASE_USERNAME}
-  password: ${JDBC_DATABASE_PASSWORD}
+  url: "${JDBC_DATABASE_URL:'jdbc:postgresql://localhost:5432/micronaut_groovy'}"
+  username: "${JDBC_DATABASE_USERNAME:postgres}"
+  password: "${JDBC_DATABASE_PASSWORD:postgres}"
