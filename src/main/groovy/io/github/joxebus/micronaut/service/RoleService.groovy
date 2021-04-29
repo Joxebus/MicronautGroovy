@@ -12,5 +12,6 @@ interface RoleService {
     Role save(@NotNull @Valid Role person)
     List<Role> findAll()
     Role find(@NotNull Long id)
+    Role findByName(@NotNull String name)
     void delete(@NotNull Long id)
 }

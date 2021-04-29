@@ -7,22 +7,15 @@ import groovy.transform.Canonical
 @Canonical
 class User {
 
+    static hasMany = [roles:Role]
+
     String username
     String password
 
-    Set<String> roles = []
-
     static mapping = {
+        table 'users'
         username email: true, unique: true
         password nullable: false
-    }
-
-    void addRole(String role) {
-        roles.add(role)
-    }
-
-    void removeRole(String role) {
-        roles.remove(role)
     }
 
     def beforeInsert() {
