@@ -13,3 +13,13 @@ micronaut:
     endpoints:
       logout:
         get-allowed: true
+---
+hibernate:
+  dialect: org.hibernate.dialect.PostgreSQLDialect
+  hbm2ddl:
+    auto: update
+dataSource:
+  driverClassName: org.postgresql.Driver
+  url: ${JDBC_DATABASE_URL}
+  username: ${JDBC_DATABASE_USERNAME}
+  password: ${JDBC_DATABASE_PASSWORD}
