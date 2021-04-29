@@ -47,6 +47,7 @@ dependencies {
     compileOnly "io.micronaut:micronaut-inject-groovy"
 
     compile "org.codehaus.groovy:groovy:3.0.3"
+    compile "org.postgresql:postgresql:42.2.20"
 
     runtime "ch.qos.logback:logback-classic:1.2.3"
     runtime "com.h2database:h2:1.4.196"
