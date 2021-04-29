@@ -40,8 +40,8 @@ class OpenIdUserValidator implements OpenIdClaimsValidator {
             Role userRole = roleService.findByName(RoleEnum.USER.toString())
             user = new User()
             user.with {
-                username:email
-                password:UUID.randomUUID().toString()
+                username = email
+                password = UUID.randomUUID().toString()
                 addToRoles(userRole)
             }
             userService.save(user)
